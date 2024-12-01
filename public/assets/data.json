@@ -1,0 +1,68 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Hamburgeres"
+    },
+    {
+      "id": 2,
+      "name": "Esfirras"
+    }
+  ],
+  "products": [
+    {
+        "id": 1,
+        "categoryId": 2,
+        "imageLink": "https://static.ifood-static.com.br/image/upload/t_low/pratos/b22db80c-69ec-4fc1-b81f-6edae910ea9b/202309251318_68I6_i.jpg",
+        "name": "Esfiha de Queijo",
+        "description": "Queijo minas direto das fazendas do Habib’s com um toque especial de salsa.",
+        "price": 5.49,
+        "promo": 0.0
+    },
+    {
+        "id": 2,
+        "categoryId": 2,
+        "imageLink": "https://static.ifood-static.com.br/image/upload/t_low/pratos/b22db80c-69ec-4fc1-b81f-6edae910ea9b/202309251250_VO6P_i.jpg",
+        "name": "Esfiha de Frango",
+        "description": "Levinha e saborosa, com tempero especial, tomate e cebola.",
+        "price": 4.99,
+        "promo": 0.0
+    },
+    {
+        "id": 3,
+        "categoryId": 2,
+        "imageLink": "https://static.ifood-static.com.br/image/upload/t_medium/pratos/b22db80c-69ec-4fc1-b81f-6edae910ea9b/202309251410_EL1E_i.jpg",
+        "name": "Esfiha Folhada de Carne com Coalhada",
+        "description": "Pra você que ama combinar sabores, experimente a Esfiha Folhada de Carne combinada com um ingrediente genuinamente árabe: a coalhada. Cremosa, saborosa e irresistível!",
+        "price": 7.49,
+        "promo": 0.0
+    },
+    {
+        "id": 4,
+        "categoryId": 1,
+        "imageLink": "https://static.ifood-static.com.br/image/upload/t_medium/pratos/95cd32ff-d101-4db4-b163-e99f27bdf853/202406200024_Vcfa_.jpeg",
+        "name": "Combo Sweet Onion",
+        "description": "Dois hambúrgueres de costela, queijo cheddar, bacon, cebola caramelizada, alface, tomate e picles no pão de brioche ou australiano. Acompanha fritas e bebida.",
+        "price": 48.99,
+        "promo": 44.99
+    },
+    {
+        "id": 5,
+        "categoryId": 1,
+        "imageLink": "https://static.ifood-static.com.br/image/upload/t_medium/pratos/95cd32ff-d101-4db4-b163-e99f27bdf853/202002220107_dcnJ_1.jpg",
+        "name": "Combo Bbq",
+        "description": "Dois hambúrgueres de costela, totalizando 300g, duas fatias de queijo provolone, bacon e barbecue",
+        "price": 48.99,
+        "promo": 44.99
+    },
+    {
+        "id": 6,
+        "categoryId": 1,
+        "imageLink": "https://static.ifood-static.com.br/image/upload/t_medium/pratos/95cd32ff-d101-4db4-b163-e99f27bdf853/202411291742_4HL2_i.jpg",
+        "name": "Combo Duplo Tasty",
+        "description": "Duplo Tasty - 2 hambúrgueres de costela, queijo cheddar, bacon, cebola roxa, alface, tomate e molho Tasty + batata + bebida",
+        "price": 44.99,
+        "promo": 0.0
+    }
+  ]
+}
