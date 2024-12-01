@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## System Design
 
-![System Design](./doc/Arq-App.jpg)
+![System Design](./doc/arq-app.png)
 
 ## Development server
 
