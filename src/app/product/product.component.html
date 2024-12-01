@@ -22,7 +22,7 @@
             <div class="product-item-price">{{product.price | currency}}</div>
           </ng-container>
           <ng-container *ngIf="product.promo > 0">
-            <div class="product-item-price">{{product.promo | currency}} <s>{{product.price | currency}}</s></div>
+            <div class="product-item-price">Por apenas: <span>{{product.promo | currency}}</span> <s>{{product.price | currency}}</s></div>
           </ng-container>
         </div>
       </div>

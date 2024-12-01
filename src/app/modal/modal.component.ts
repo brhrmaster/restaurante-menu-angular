@@ -7,11 +7,12 @@ import { Product } from '../models/models.component';
   selector: 'app-modal',
   imports: [],
   templateUrl: './modal.component.html',
-  styleUrl: './modal.component.css'
+  styleUrl: './modal.component.css',
+  inputs: ['selectedProduct']
 })
 export class ModalComponent {
   activeModal = inject(NgbActiveModal);
-	@Input() selectedProduct: Product;
+	@Input('selectedProduct') selectedProduct: Product;
 
   constructor() {
     this.selectedProduct = new Product();

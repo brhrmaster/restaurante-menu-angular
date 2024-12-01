@@ -1,14 +1,70 @@
-import { Component, OnInit, inject, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
+import { Component, OnInit, inject, Input, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { FormsModule, FormControl } from '@angular/forms';
 import { ProductService } from '../services/product-service/product.service';
 import { Category, Product } from '../models/models.component';
-import { ModalComponent } from '../modal/modal.component';
 import localePt from '@angular/common/locales/pt';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 registerLocaleData(localePt, 'pt');
 
+
+@Component({
+	selector: 'ngbd-modal-content',
+	standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule
+  ],
+  providers: [
+      {
+          provide: LOCALE_ID,
+          useValue: 'pt'
+      },
+      {
+          provide:  DEFAULT_CURRENCY_CODE,
+          useValue: 'BRL'
+      },
+  ],
+	template: `
+		<div class="modal-header">
+			<h4 class="modal-title">Incluir {{selectedProduct.name}}</h4>
+			<button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+		</div>
+		<div class="modal-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-3">
+            <img class="img-fluid" src="{{selectedProduct.imageLink}}"/>
+          </div>
+          <div class="col-9">
+            <div class="product-item-desc">{{selectedProduct.description}}</div>
+            <ng-container *ngIf="selectedProduct.promo <= 0">
+              <div class="product-item-price" style="margin-top: 20px; color: #0ab54e">{{selectedProduct.price | currency}}</div>
+            </ng-container>
+            <ng-container *ngIf="selectedProduct.promo > 0">
+              <div class="product-item-price" style="margin-top: 20px;">Por apenas: <span style="color: #0ab54e">{{selectedProduct.promo | currency}} </span> <s>{{selectedProduct.price | currency}}</s></div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss('cancel click')">Cancelar</button>
+			<button type="button" class="btn btn-danger" (click)="incluirProduto(activeModal)">Ok</button>
+		</div>
+	`,
+})
+export class NgbdModalContent {
+	activeModal = inject(NgbActiveModal);
+
+	@Input() selectedProduct: Product = new Product();
+
+  incluirProduto(modal: NgbActiveModal): void {
+    console.log('produto adicionado!');
+    modal.close('Ok click')
+  }
+}
 
 
 @Component({
@@ -16,8 +72,7 @@ registerLocaleData(localePt, 'pt');
   selector: 'app-product',
   imports: [
     CommonModule,
-    FormsModule,
-    ModalComponent
+    FormsModule
   ],
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
@@ -37,10 +92,12 @@ export class ProductComponent implements OnInit {
   categories: Category[] = [];
   currentCategory: string;
   selectCategory: FormControl = new FormControl('');
+  selectedProduct: Product;
   private modalService = inject(NgbModal);
 
   constructor(private productService: ProductService) {
     this.currentCategory = '1';
+    this.selectedProduct = new Product();
   }
 
   loadData(): void {
@@ -68,6 +125,9 @@ export class ProductComponent implements OnInit {
   }
 
   prepareAddToCart(product: Product): void {
+    this.selectedProduct = product;
+    const modalRef = this.modalService.open(NgbdModalContent);
+		modalRef.componentInstance.selectedProduct = product;
     //const modalRef = this.modalService.open(ModalComponent);
 		//modalRef.componentInstance.selectedProduct = product;
   }
