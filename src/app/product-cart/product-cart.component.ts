@@ -25,7 +25,7 @@ registerLocaleData(localePt, 'pt');
   styleUrl: './product-cart.component.css'
 })
 export class ProductCartComponent {
-  @Input() selectedProduts!: Product[];
+  @Input() selectedProducts!: Product[];
 
   getSubtotal(product: Product):number {
     const price = product.promo > 0 ? product.promo : product.price;
@@ -33,7 +33,7 @@ export class ProductCartComponent {
   }
 
   getTotal(): number {
-    return this.selectedProduts
+    return this.selectedProducts
       .map(product => this.getSubtotal(product))
       .reduce((prev: number, current: number) => {
         return prev + current;

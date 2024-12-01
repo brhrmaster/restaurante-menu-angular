@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, LOCALE_ID, DEFAULT_CURRENCY_CODE, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, inject, LOCALE_ID, DEFAULT_CURRENCY_CODE, Output, EventEmitter, Input } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { FormsModule, FormControl } from '@angular/forms';
 import { ProductService } from '../services/product-service/product.service';
@@ -37,6 +37,7 @@ export class ProductComponent implements OnInit {
   private modalService = inject(NgbModal);
 
   @Output() onProductSelected = new EventEmitter<Product>();
+  @Input() selectedProducts!: Product[];
 
   constructor(private productService: ProductService) {}
 
@@ -79,6 +80,10 @@ export class ProductComponent implements OnInit {
 
   addToCart(product: Product) {
     this.onProductSelected.emit(product);
+  }
+
+  getSelectedQtd(product: Product):number {
+    return this.selectedProducts.find(_product => _product.id === product.id)?.qtd || 0;
   }
 }
 

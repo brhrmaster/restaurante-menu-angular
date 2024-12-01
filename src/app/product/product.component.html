@@ -16,13 +16,15 @@
           <img class="img-fluid" src="{{product.imageLink}}"/>
         </div>
         <div class="col-9">
-          <div data-id="{{product.id}}" class="product-item-name">{{product.name}}</div>
+          <div data-id="{{product.id}}" class="product-item-name">{{product.name}}
+            <span class="badge text-bg-danger" style="float: right;" *ngIf="getSelectedQtd(product) > 0">{{getSelectedQtd(product)}}</span>
+          </div>
           <div class="product-item-desc">{{product.description}}</div>
           <ng-container *ngIf="product.promo <= 0">
             <div class="product-item-price">{{product.price | currency}}</div>
           </ng-container>
           <ng-container *ngIf="product.promo > 0">
-            <div class="product-item-price">Por apenas: <span>{{product.promo | currency}}</span> <s>{{product.price | currency}}</s></div>
+            <div class="product-item-price">Por apenas: <span>{{product.promo | currency}}</span>&nbsp;<s>{{product.price | currency}}</s></div>
           </ng-container>
         </div>
       </div>

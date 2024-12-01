@@ -14,7 +14,7 @@
           <div class="product-item-price" style="margin-top: 20px; color: #0ab54e">{{selectedProduct.price | currency}}</div>
         </ng-container>
         <ng-container *ngIf="selectedProduct.promo > 0">
-          <div class="product-item-price" style="margin-top: 20px;">Por apenas: <span style="color: #0ab54e">{{selectedProduct.promo | currency}} </span> <s>{{selectedProduct.price | currency}}</s></div>
+          <div class="product-item-price" style="margin-top: 20px;">Por apenas: <span style="color: #0ab54e">{{selectedProduct.promo | currency}} </span>&nbsp;<s>{{selectedProduct.price | currency}}</s></div>
         </ng-container>
       </div>
     </div>
@@ -22,5 +22,5 @@
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss('cancel click')">Cancelar</button>
-  <button type="button" class="btn btn-danger" (click)="incluirProduto(activeModal)">Ok</button>
+  <button type="button" class="btn btn-primary" (click)="incluirProduto(activeModal)">Incluir</button>
 </div>

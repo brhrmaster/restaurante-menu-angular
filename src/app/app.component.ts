@@ -23,7 +23,7 @@ import { ProductCartComponent } from './product-cart/product-cart.component';
 })
 export class AppComponent {
   currentPage: string = 'cardapio';
-  selectedProduts:Product[] = [];
+  selectedProducts:Product[] = [];
 
   setPage(page: string) {
     this.currentPage = page;
@@ -35,13 +35,11 @@ export class AppComponent {
 
   addToCart(product: Product) {
     // check if not exists
-    if(!this.selectedProduts.some(_product => _product.id === product.id)) {
-      this.selectedProduts.push({ ...product })
+    if(!this.selectedProducts.some(_product => _product.id === product.id)) {
+      this.selectedProducts.push({ ...product })
     } else {
       // add qtd
-      this.selectedProduts.find(_product => _product.id === product.id)!.qtd++;
+      this.selectedProducts.find(_product => _product.id === product.id)!.qtd++;
     }
-
-    console.log(this.selectedProduts);
   }
 }
