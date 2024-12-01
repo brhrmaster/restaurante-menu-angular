@@ -31,4 +31,12 @@ export class ProductCartComponent {
     const price = product.promo > 0 ? product.promo : product.price;
     return product.qtd * price;
   }
+
+  getTotal(): number {
+    return this.selectedProduts
+      .map(product => this.getSubtotal(product))
+      .reduce((prev: number, current: number) => {
+        return prev + current;
+      }, 0);
+  }
 }

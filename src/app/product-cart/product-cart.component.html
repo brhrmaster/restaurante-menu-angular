@@ -28,6 +28,11 @@
 
 <div class="container" *ngIf="selectedProduts.length > 0">
   <div class="row">
+    <div class="col-12 payment-block-total">
+      <h3>Total: {{ getTotal() | currency}}</h3>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-12 payment-block">
       <button type="button" class="btn btn-danger">Continuar para pagamento...</button>
     </div>
