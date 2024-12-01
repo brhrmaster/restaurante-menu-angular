@@ -1,0 +1,11 @@
+.payment-block {
+  text-align: right;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 600px) {
+  .payment-block button {
+    width: 100%;
+  }
+}

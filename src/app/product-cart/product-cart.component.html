@@ -1,22 +1,16 @@
-<form>
-  <select
-    #categorySelect
-    (change)='onCategorySelected(categorySelect.value)'
-    class="form-select form-select-lg mb-3"
-    aria-label="Large select example">
-    <option *ngFor='let category of categories' [value]="category.id" [selected]="toNumber(currentCategory) == category.id">{{category.name}}</option>
-  </select>
-</form>
+<h3 *ngIf="selectedProduts.length > 0">Produtos em seu carrinho</h3>
+
+<p *ngIf="selectedProduts.length === 0">Nenhum produto selecionado.</p>
 
 <ul id="product-list" class="list-group">
-  <li class="list-group-item product-item row" *ngFor="let product of products" (click)="prepareAddToCart(product)">
+  <li class="list-group-item product-item row" *ngFor="let product of selectedProduts">
     <div class="container">
       <div class="row">
         <div class="col-3">
           <img class="img-fluid" src="{{product.imageLink}}"/>
         </div>
         <div class="col-9">
-          <div data-id="{{product.id}}" class="product-item-name">{{product.name}}</div>
+          <div data-id="{{product.id}}" class="product-item-name">({{product.qtd}}un) {{product.name}}</div>
           <div class="product-item-desc">{{product.description}}</div>
           <ng-container *ngIf="product.promo <= 0">
             <div class="product-item-price">{{product.price | currency}}</div>
@@ -24,9 +18,18 @@
           <ng-container *ngIf="product.promo > 0">
             <div class="product-item-price">Por apenas: <span>{{product.promo | currency}}</span> <s>{{product.price | currency}}</s></div>
           </ng-container>
+
+          Subtotal: {{ getSubtotal(product) | currency}}
         </div>
       </div>
     </div>
   </li>
 </ul>
 
+<div class="container" *ngIf="selectedProduts.length > 0">
+  <div class="row">
+    <div class="col-12 payment-block">
+      <button type="button" class="btn btn-danger">Continuar para pagamento...</button>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,7 @@ export class Product {
   description: string = '';
   price: number = 0;
   promo: number = 0;
+  qtd:number = 1;
 };
 
 export class Category {

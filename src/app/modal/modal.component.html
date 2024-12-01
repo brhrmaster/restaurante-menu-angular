@@ -1,18 +1,26 @@
-<!-- Modal -->
-<div class="modal fade" #addProductToCartModal tabindex="-1" aria-labelledby="addProductToCartModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="addProductToCartModalLabel">Incluir produto na sacola</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+<div class="modal-header">
+  <h4 class="modal-title">Incluir {{selectedProduct.name}}</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <img class="img-fluid" src="{{selectedProduct.imageLink}}"/>
       </div>
-      <div class="modal-body">
-        Deseja incluir este item na sacola?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Incluir</button>
+      <div class="col-9">
+        <div class="product-item-desc">{{selectedProduct.description}}</div>
+        <ng-container *ngIf="selectedProduct.promo <= 0">
+          <div class="product-item-price" style="margin-top: 20px; color: #0ab54e">{{selectedProduct.price | currency}}</div>
+        </ng-container>
+        <ng-container *ngIf="selectedProduct.promo > 0">
+          <div class="product-item-price" style="margin-top: 20px;">Por apenas: <span style="color: #0ab54e">{{selectedProduct.promo | currency}} </span> <s>{{selectedProduct.price | currency}}</s></div>
+        </ng-container>
       </div>
     </div>
   </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss('cancel click')">Cancelar</button>
+  <button type="button" class="btn btn-danger" (click)="incluirProduto(activeModal)">Ok</button>
 </div>

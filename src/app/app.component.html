@@ -9,7 +9,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto py-4 py-lg-0">
               <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" (click)="setPage('cardapio')" href="#">Cardápio</a></li>
-              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" (click)="setPage('sacola')" href="#">Sacola</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" (click)="setPage('sacola')" href="#">Carrinho ({{selectedProduts.length}})</a></li>
               <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" (click)="setPage('sobre')" href="#">Sobre</a></li>
           </ul>
       </div>
@@ -19,11 +19,12 @@
 <app-home></app-home>
 
 <ng-container *ngIf="currentPage == 'cardapio'">
-  <app-product></app-product>
+  <app-product (onProductSelected)="onProductSelected($event)"></app-product>
 </ng-container>
 
 <ng-container *ngIf="currentPage == 'sacola'">
-  <h1>Sacola</h1>
+  <h1>Carrinho</h1>
+  <app-product-cart [selectedProduts]="selectedProduts"></app-product-cart>
 </ng-container>
 
 <ng-container *ngIf="currentPage == 'sobre'">

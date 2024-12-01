@@ -10482,3 +10482,32 @@ header.masthead .post-heading .meta a {
     font-size: 2.25rem;
   }
 }
+
+
+.product-item {
+  background-color: #fff;
+}
+
+.product-item:hover {
+  background-color: #eee;
+  cursor: pointer
+}
+
+.product-item-name {
+  font-size: max(2vw, 18pt);
+  font-weight: bold;
+}
+
+.product-item-desc {
+  font-size: max(2vw, 14pt);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.product-item-price span {
+  color: #0ab54e
+}
+
+.product-item-price s {
+  color: #bbb
+}
