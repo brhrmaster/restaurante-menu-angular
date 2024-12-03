@@ -2,6 +2,10 @@
 
 This project can be used as restaurant menu website - Using [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
 
+## Demo
+
+[go](http://restaurante.criativainteligente.com.br){:target="_blank"}
+
 ## System Design
 
 ![System Design](./doc/arq-app.png)
