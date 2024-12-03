@@ -1,6 +1,6 @@
-# RestauranteMenuAngular
+# Restaurante Menu Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+This project can be used as restaurant menu website - Using [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
 
 ## System Design
 
