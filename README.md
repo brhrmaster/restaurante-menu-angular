@@ -4,7 +4,7 @@ This project can be used as restaurant menu website - Using [Angular CLI](https:
 
 ## Demo
 
-[go](http://restaurante.criativainteligente.com.br){:target="_blank"}
+Link: [restaurante.criativainteligente.com.br](http://restaurante.criativainteligente.com.br)
 
 ## System Design
 
